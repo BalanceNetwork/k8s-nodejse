@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitnodejs
+spec:
+  selector:
+    matchLabels:
+      app: gitnodejs
+  template:
+    metadata:
+      labels:
+        app: gitnodejs
+    spec:
+      containers:
+      - name: gitnodejs
+        image: guventopalbalance/git-nodejs
+        command:
+          - "./run.sh"
+        args:
+          - "https://github.com/BalanceNetwork/k8s-nodejse.git"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 4444
