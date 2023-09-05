@@ -28,11 +28,31 @@ WORKDIR /home
 # İhtiyaç duyulan paketler....
 RUN apk add git autoconf automake g++ make --no-cache
 
-# Imaj çalıştırılmak istendiğinde yürütülecek komut....
-CMD ["git", "--version"]
-```
+# Imajın çalışması için gereken ön komutlar....
+COPY run.sh .
+
+# Imaj ön komutların girişte çalıştırılması....
+ENTRYPOINT [ "./run.sh" ]
 
 ```
-docker build . --tag bln:latest
+
+#### Imaj ın derlenmesi;
+
 ```
+docker build . --tag <username>/git-nodejs:latest
+```
+
+#### Derlenen imajın yürütülmesi;
+
+```
+docker run bln https://github.com/BalanceNetwork/k8s-nodejse.git
+```
+
+#### Derlenen imajın hub.docker.com a yüklenmesi;
+
+```
+docker push <username>/git-nodejs
+```
+
+
 
