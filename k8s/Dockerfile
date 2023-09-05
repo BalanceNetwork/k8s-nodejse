@@ -4,5 +4,7 @@ WORKDIR /home
 
 RUN apk add git autoconf automake g++ make --no-cache
 
-CMD ["git", "--version"]
+ENTRYPOINT ["git", "clone"]
+
+CMD [ "yarn" ]
 
