@@ -17,5 +17,6 @@ app.get("/jwt", async (req, res) => {
     res.send(`Payload: ${payload}, - Encoded: ${enc}`);
 });
 app.listen(4444, () => {
+    console.log("first log");
     console.log("Server started on port http://localhost:5555");
 });
